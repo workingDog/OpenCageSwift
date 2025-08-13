@@ -36,6 +36,7 @@ public enum APIError: Swift.Error, LocalizedError {
  * THIS IS NOT SECURE, THE API KEY IS EMBEDDED IN THE URL
  * RECOMMEND USING A BACKEND SERVER FOR KEY SETUP
  *
+ *  see  https://opencagedata.com/faq#header-auth
  *
  */
 public class OCClient {

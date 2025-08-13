@@ -1,4 +1,4 @@
-# OpenCage data API Swift client library, "Convert coordinates to and from places".
+# OpenCage data API Swift client library, "Convert coordinates to and from places"
 
 **OpenCageSwift** is a small Swift library to connect to the [OpenCage](https://opencagedata.com/) and retrieve the forward and reverse geocoding data. Made easy to use with **SwiftUI**. 
 
@@ -8,7 +8,7 @@
                                                                         
 ### Usage
 
-[OpenCage](https://opencagedata.com/) data is accessed through the use of a **OCProvider**, with simple functions, for example:
+[OpenCage](https://opencagedata.com/) data is accessed through the use of a **OCProviderJson**, with simple functions, for example:
 
 ```swift
 let ocProvider = OCProviderJson(apiKey: "your key")

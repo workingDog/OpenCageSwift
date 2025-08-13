@@ -64,6 +64,17 @@ public struct OCProviderJson {
             return nil
         }
     }
+    
+    /// get the geocode for the given address with the given options, with completion handler
+    @MainActor
+    public func forwardGeocode(address: String, options: OCOptions, completion: @escaping (OCResponse?) -> Void) {
+        Task {
+            let results: OCResponse? = try await forwardGeocode(address: address, options: options)
+            DispatchQueue.main.async {
+                completion(results)
+            }
+        }
+    }
 
 }
 
