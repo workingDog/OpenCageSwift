@@ -84,7 +84,7 @@ public class OCClient {
         request.addValue(contentType, forHTTPHeaderField: "Content-Type")
         
         do {
-            let (data, response) = try await URLSession.shared.data(for: request)
+            let (data, response) = try await sessionManager.data(for: request)
    
             guard let httpResponse = response as? HTTPURLResponse else {
                 throw APIError.unknown
