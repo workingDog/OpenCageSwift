@@ -38,12 +38,12 @@ ocProvider.reverseGeocode(lat: latitude, lon: longitude, options: OCOptions()) {
 }
 ```
 
-#### Example use in SwiftUI using the @Observable data model OCJsonDataModel
+#### Example use in SwiftUI using the @Observable data model OCDataModelJson
 
 
 ```swift
 struct ContentView: View {
-    let dataModel = OCJsonDataModel(apiKey: "YOUR-KEY")
+    let dataModel = OCDataModelJson(apiKey: "YOUR-KEY")
 
     var body: some View {
         VStack {

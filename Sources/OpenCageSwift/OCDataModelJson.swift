@@ -1,5 +1,5 @@
 //
-//  OCJsonDataModel.swift
+//  OCDataModelJson.swift
 //  OpenCageSwift
 //
 //  Created by Ringo Wathelet on 2025/08/15.
@@ -8,9 +8,9 @@ import Foundation
 import SwiftUI
 
 /**
- * provide access to the OpenCage data using observable conformance for use in SwiftUI views
+ * access the OpenCage data using observable data model, for use in SwiftUI views
  */
-@Observable public class OCJsonDataModel {
+@Observable public class OCDataModelJson {
     
     public var response: OCResponse = OCResponse()
     public var isLoading = false
