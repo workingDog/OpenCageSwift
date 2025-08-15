@@ -41,8 +41,9 @@ public enum APIError: Swift.Error, LocalizedError {
  */
 public class OCClient {
 
-    let sessionManager: URLSession
-    let mediaType = "application/json; charset=utf-8"
+    public var sessionManager: URLSession
+    public var acceptType = "application/json; charset=utf-8"
+    public var contentType = "application/json; charset=utf-8"
     
     private let openCageURL: URL?
     
@@ -79,8 +80,8 @@ public class OCClient {
   
         var request = URLRequest(url: components.url!)
         request.httpMethod = "GET"
-        request.addValue(mediaType, forHTTPHeaderField: "Accept")
-        request.addValue(mediaType, forHTTPHeaderField: "Content-Type")
+        request.addValue(acceptType, forHTTPHeaderField: "Accept")
+        request.addValue(contentType, forHTTPHeaderField: "Content-Type")
         
         do {
             let (data, response) = try await URLSession.shared.data(for: request)
