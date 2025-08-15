@@ -38,6 +38,39 @@ ocProvider.reverseGeocode(lat: latitude, lon: longitude, options: OCOptions()) {
 }
 ```
 
+#### Example use in SwiftUI using @Observable data model
+
+
+```swift
+struct ContentView: View {
+    let dataModel = OCJsonDataModel(apiKey: "YOUR-KEY")
+
+    var body: some View {
+        VStack {
+            if dataModel.isLoading {
+                ProgressView()
+            }
+            Map {
+                ForEach(dataModel.response.results) { result in
+                    if let coord = result.coordinate() {
+                        Marker(result.formatted ?? "", systemImage: "globe", coordinate: coord)
+                    }
+                }
+            }
+            .mapStyle(.standard)
+            .mapControlVisibility(.automatic)
+        }
+        .task {
+            dataModel.isLoading = true
+            await dataModel.forwardGeocode(address: "Sydney, Australia", options: OCOptions())
+            dataModel.isLoading = false
+        }
+    }
+  
+}
+```
+
+
 ### Options
 
 Options available:

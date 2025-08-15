@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 
 // MARK: - OCResponse
@@ -85,6 +86,13 @@ public struct Result: Identifiable, Codable {
     enum CodingKeys: String, CodingKey {
         case annotations, bounds, components, confidence, formatted, geometry
         case distanceFromQ = "distance_from_q"
+    }
+    
+    public func coordinate() -> CLLocationCoordinate2D? {
+        if let geom = geometry {
+            return CLLocationCoordinate2D(latitude: geom.lat, longitude: geom.lng)
+        }
+        return nil
     }
 }
 
