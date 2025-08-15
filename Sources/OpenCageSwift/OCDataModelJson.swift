@@ -23,7 +23,7 @@ import SwiftUI
         self.client = OCClient(apiKey: apiKey, urlString: urlString, format: .json)
     }
     
-    /// get the reverse geocoding for the given location with the given options, with async
+    /// get the reverse geocoding for the given location with the given options
     public func reverseGeocode(lat: Double, lon: Double, options: OCOptions) async {
         do {
             response = try await client.fetchJsonAsync(lat: lat, lon: lon, options: options)
