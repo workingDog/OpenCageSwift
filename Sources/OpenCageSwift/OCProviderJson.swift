@@ -1,5 +1,5 @@
 //
-//  OCProvider.swift
+//  OCProviderJson.swift
 //  OpenCageSwift
 //
 //  Created by Ringo Wathelet on 2025/08/13.
