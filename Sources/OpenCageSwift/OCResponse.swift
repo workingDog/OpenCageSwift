@@ -87,13 +87,6 @@ public struct Result: Identifiable, Codable {
         case annotations, bounds, components, confidence, formatted, geometry
         case distanceFromQ = "distance_from_q"
     }
-    
-    public func coordinate() -> CLLocationCoordinate2D? {
-        if let geom = geometry {
-            return CLLocationCoordinate2D(latitude: geom.lat, longitude: geom.lng)
-        }
-        return nil
-    }
 }
 
 // MARK: - Annotations
@@ -252,6 +245,10 @@ public struct Bounds: Codable {
 // MARK: - Geometry
 public struct Geometry: Codable {
     public let lat, lng: Double
+    
+    public func asCoordinate() -> CLLocationCoordinate2D {
+        CLLocationCoordinate2D(latitude: lat, longitude: lng)
+    }
 }
 
 // MARK: - Components

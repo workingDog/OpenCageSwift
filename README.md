@@ -52,7 +52,7 @@ struct ContentView: View {
             }
             Map {
                 ForEach(dataModel.response.results) { result in
-                    if let coord = result.coordinate() {
+                    if let coord = result.geometry?.asCoordinate() {
                         Marker(result.formatted ?? "", systemImage: "globe", coordinate: coord)
                     }
                 }
