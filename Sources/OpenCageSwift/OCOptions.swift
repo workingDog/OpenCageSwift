@@ -23,22 +23,22 @@ public enum OCFormats: String, Identifiable, CaseIterable {
 /*
  * Options
  */
-public class OCOptions: Codable {
+public struct OCOptions: Codable {
     
-    private var abbrv: Int?
-    private var address_only: Int?
-    private var add_request: Int?
-    private var bounds: [Double]?
-    private var countrycode: String?
-    private var language: String?
-    private var limit: Int?
-    private var no_annotations: Int?
-    private var no_dedupe: Int?
-    private var no_record: Int?
-    private var pretty: Int?
-    private var roadinfo: Int?
+    var abbrv: Int?
+    var address_only: Int?
+    var add_request: Int?
+    var bounds: [Double]?
+    var countrycode: String?
+    var language: String?
+    var limit: Int?
+    var no_annotations: Int?
+    var no_dedupe: Int?
+    var no_record: Int?
+    var pretty: Int?
+    var roadinfo: Int?
     
-    private var proximity: [Double]?  // <--- [lat,lon, ...]
+    var proximity: [Double]?  // <--- [lat,lon, ...]
     
     public init(abbrv: Int? = nil, address_only: Int? = nil, add_request: Int? = nil, bounds: [Double]? = nil, countrycode: String? = nil, language: String? = nil, limit: Int? = nil, no_annotations: Int? = nil, no_dedupe: Int? = nil, no_record: Int? = nil, pretty: Int? = nil, roadinfo: Int? = nil, proximity: [Double]? = nil) {
         self.abbrv = abbrv
