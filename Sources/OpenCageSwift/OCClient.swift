@@ -73,7 +73,7 @@ public class OCClient {
         
         var components = URLComponents(url: url, resolvingAgainstBaseURL: true)!
         var queryItems: [URLQueryItem] = options.toQueryItems()
-        queryItems.append(URLQueryItem(name: "q", value: "\(query)"))
+        queryItems.append(URLQueryItem(name: "q", value: query))
         components.queryItems = components.queryItems.map { $0 + queryItems } ?? queryItems
   
         var request = URLRequest(url: components.url!)
