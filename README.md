@@ -38,7 +38,9 @@ ocProvider.reverseGeocode(lat: latitude, lon: longitude, options: OCOptions()) {
 }
 ```
 
-#### Example use in SwiftUI using the @Observable data model OCDataModelJson
+#### SwiftUI and data model
+
+Using the @Observable data model OCDataModelJson
 
 
 ```swift

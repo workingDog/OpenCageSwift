@@ -32,11 +32,9 @@ public enum APIError: Swift.Error, LocalizedError {
  * urlString: https://api.opencagedata.com/geocode/v1
  *
  *
+ * NOTE, THE API KEY IS EMBEDDED IN THE URL
  *
- * THIS IS NOT SECURE, THE API KEY IS EMBEDDED IN THE URL
- * RECOMMEND USING A BACKEND SERVER FOR KEY SETUP
- *
- *  see  https://opencagedata.com/faq#header-auth
+ * see  https://opencagedata.com/faq#header-auth
  *
  */
 public class OCClient {
@@ -150,22 +148,6 @@ public class OCClient {
      */
     public func fetchDataAsync(address: String, options: OCOptions) async throws -> Data {
         try await fetchDataAsyncQ(query: address, options: options)
-    }
-    
-    /*
-     * fetch data from the server.
-     * A GET request with the chosen parameters is sent to the server.
-     * The server response is parsed then converted to a JSON object, OCResponse.
-     *
-     * @lat latitude
-     * @lon longitude
-     * @options OCOptions
-     * @return a T
-     */
-    public func fetchJsonAsync<T: Decodable>(lat: Double, lon: Double, options: OCOptions) async throws -> T {
-        let data = try await fetchDataAsync(lat: lat, lon: lon, options: options)
-        let results = try JSONDecoder().decode(T.self, from: data)
-        return results
     }
 
 }

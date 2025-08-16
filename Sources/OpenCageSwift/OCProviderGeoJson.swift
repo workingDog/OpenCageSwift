@@ -12,7 +12,7 @@ import MapKit
 // for testing
 
 /**
- * provide access to the OpenCage data JSON API using simple functions
+ * provide access to the OpenCage data GEOJSON API using simple functions
  */
 public struct OCProviderGeoJson {
     

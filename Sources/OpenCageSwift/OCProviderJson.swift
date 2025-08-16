@@ -23,9 +23,11 @@ public struct OCProviderJson {
     /// get the reverse geocoding for the given location with the given options, with async
     public func reverseGeocode(lat: Double, lon: Double, options: OCOptions) async -> OCResponse? {
         do {
-            let results: OCResponse = try await client.fetchJsonAsync(lat: lat, lon: lon, options: options)
+            let data = try await client.fetchDataAsync(lat: lat, lon: lon, options: options)
+            let results: OCResponse = try JSONDecoder().decode(OCResponse.self, from: data)
             return results
-        } catch {
+        }
+        catch {
             print(error)
             return nil
         }

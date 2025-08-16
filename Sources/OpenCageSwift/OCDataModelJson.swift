@@ -26,8 +26,10 @@ import SwiftUI
     /// get the reverse geocoding for the given location with the given options
     public func reverseGeocode(lat: Double, lon: Double, options: OCOptions) async {
         do {
-            response = try await client.fetchJsonAsync(lat: lat, lon: lon, options: options)
-        } catch {
+            let data = try await client.fetchDataAsync(lat: lat, lon: lon, options: options)
+            response = try JSONDecoder().decode(OCResponse.self, from: data)
+        }
+        catch {
             self.error = error as? APIError
             print(error)
         }
