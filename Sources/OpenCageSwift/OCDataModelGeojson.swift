@@ -33,6 +33,7 @@ import MapKit
         } catch {
             self.error = error as? APIError
             print(error)
+            features = []
         }
     }
     
@@ -45,6 +46,7 @@ import MapKit
         } catch {
             self.error = error as? APIError
             print(error)
+            features = []
         }
     }
     

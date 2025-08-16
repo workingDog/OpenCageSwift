@@ -46,7 +46,7 @@ public struct OCResponse: Identifiable, Codable {
         self.licenses = []
         self.rate = nil
         self.results = []
-        self.status = Status(code: 200, message: "OK")
+        self.status = Status(code: 0, message: "")
         self.stayInformed = StayInformed(blog: "", mastodon: "")
         self.thanks = ""
         self.timestamp = OCTimestamp()

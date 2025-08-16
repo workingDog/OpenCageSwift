@@ -32,6 +32,7 @@ import SwiftUI
         catch {
             self.error = error as? APIError
             print(error)
+            response = OCResponse()
         }
     }
     
@@ -44,6 +45,7 @@ import SwiftUI
         catch {
             self.error = error as? APIError
             print(error)
+            response = OCResponse()
         }
     }
     

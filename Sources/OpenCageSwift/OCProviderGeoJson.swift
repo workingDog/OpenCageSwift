@@ -59,8 +59,9 @@ public struct OCProviderGeoJson {
             return features
         } catch {
             print("Failed to decode GeoJSON: \(error)")
+            return []
         }
-        return []
+        
     }
     
 }
