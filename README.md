@@ -86,7 +86,7 @@ struct ContentView: View {
 
 Options available:
 
--   see [OpenCage API](https://opencagedata.com/api#optional-params) for all the options available.
+-   see [OpenCage API](https://opencagedata.com/api#optional-params) for all the optional parameters available.
 
 ### Installation
 
