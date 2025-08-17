@@ -102,7 +102,7 @@ public struct Annotations: Codable {
     public let qibla: Double?
     public let roadinfo: Roadinfo?
     public let sun: Sun?
-    public let timezone: Timezone?
+    public let timezone: OCTimezone?
     public let what3Words: What3Words?
 
     enum CodingKeys: String, CodingKey {
@@ -193,7 +193,7 @@ public struct Rise: Codable {
 }
 
 // MARK: - Timezone
-public struct Timezone: Codable {
+public struct OCTimezone: Codable {
     public let name: String
     public let nowInDst, offsetSEC: Int
     public let offsetString, shortName: String
@@ -204,6 +204,16 @@ public struct Timezone: Codable {
         case offsetSEC = "offset_sec"
         case offsetString = "offset_string"
         case shortName = "short_name"
+    }
+    
+    /// Convert to Foundation.TimeZone
+    public var asTimeZone: TimeZone? {
+        // Prefer identifier first (handles DST properly)
+        if let tz = TimeZone(identifier: name) {
+            return tz
+        }
+        // Fallback: construct from raw offset
+        return TimeZone(secondsFromGMT: offsetSEC)
     }
 }
 
