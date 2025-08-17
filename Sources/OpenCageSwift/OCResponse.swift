@@ -317,4 +317,8 @@ public struct OCTimestamp: Codable {
         self.createdHTTP = ""
         self.createdUnix = 0
     }
+    
+    public func asDate() -> Date {
+        return Date(timeIntervalSince1970: TimeInterval(createdUnix))
+    }
 }
