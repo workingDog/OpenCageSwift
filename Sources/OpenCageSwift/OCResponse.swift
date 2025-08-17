@@ -192,7 +192,7 @@ public struct Rise: Codable {
     public let apparent, astronomical, civil, nautical: Int
 }
 
-// MARK: - Timezone
+// MARK: - OCTimezone
 public struct OCTimezone: Codable {
     public let name: String
     public let nowInDst, offsetSEC: Int
