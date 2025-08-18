@@ -14,18 +14,9 @@ import SwiftUI
  */
 @Observable
 @MainActor
-public final class OCDataModelJson {
+public final class OCDataModelJson: OCBaseJsonModel {
     
     public var response: OCResponse = OCResponse()
-    public var isLoading = false
-    public var error: APIError?
-    
-    public let client: OCClient
-    
-    /// default endpoint
-    public init(apiKey: String, urlString: String = "https://api.opencagedata.com/geocode/v1") {
-        self.client = OCClient(apiKey: apiKey, urlString: urlString, format: .json)
-    }
     
     /// get the reverse geocoding for the given location with the given options
     public func reverseGeocode(lat: Double, lng: Double, options: OCOptions) async {
@@ -40,32 +31,6 @@ public final class OCDataModelJson {
     /// get the geocode for the given address with the given options
     public func forwardGeocode(address: String, options: OCOptions) async {
         response = await getForwardGeocode(address: address, options: options)
-    }
-    
-    /// get the reverse geocoding for the given location with the given options, return a OCResponse
-    private func getReverseGeocode(lat: Double, lng: Double, options: OCOptions) async -> OCResponse {
-        do {
-            let data = try await client.fetchDataAsync(lat: lat, lng: lng, options: options)
-            let response: OCResponse = try JSONDecoder().decode(OCResponse.self, from: data)
-            return response
-        } catch {
-            self.error = error as? APIError
-            print(error)
-            return OCResponse()
-        }
-    }
-    
-    /// get the geocode for the given address with the given options, return a OCResponse
-    private func getForwardGeocode(address: String, options: OCOptions) async -> OCResponse {
-        do {
-            let data = try await client.fetchDataAsync(address: address, options: options)
-            let response: OCResponse = try JSONDecoder().decode(OCResponse.self, from: data)
-            return response
-        } catch {
-            self.error = error as? APIError
-            print(error)
-            return OCResponse()
-        }
     }
     
 }

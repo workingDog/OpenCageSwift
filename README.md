@@ -47,7 +47,7 @@ ocProvider.reverseGeocode(lat: latitude, lon: longitude, options: OCOptions()) {
 }
 ```
 
-#### SwiftUI with data model
+#### SwiftUI compatible data model
 
 Using the @Observable data model **OCDataModelJson**
 
@@ -80,6 +80,8 @@ struct ContentView: View {
   
 }
 ```
+
+Similarly use the **OCBatchProvider** for JSON geocoding in batch mode parallel processing.
 
 
 ### Options

@@ -11,22 +11,13 @@ import SwiftUI
 
 /**
  * provide access to the OpenCage data observable data for use in SwiftUI views
- */   
+ */
 @Observable
 @MainActor
-public final class OCBatchProvider {
-
+public final class OCBatchProvider: OCBaseJsonModel {
+    
     public var batchResponses: [OCResponse] = []
-    public var isLoading = false
-    public var error: APIError?
     
-    public let client: OCClient
-    
-    /// default endpoint
-    public init(apiKey: String, urlString: String = "https://api.opencagedata.com/geocode/v1") {
-        self.client = OCClient(apiKey: apiKey, urlString: urlString, format: .json)
-    }
-
     /// get the batch/concurrent reverse geocoding for the given locations with the given options
     public func batchReverseGeocode(_ coords: [Geometry], options: OCOptions) async  {
         return await withTaskGroup(of: OCResponse.self) { group -> Void in
@@ -40,7 +31,7 @@ public final class OCBatchProvider {
             }
         }
     }
-
+    
     /// get the batch/concurrent forward geocoding for the given addresses with the given options
     public func batchForwardGeocode(_ addresses: [String], options: OCOptions) async  {
         return await withTaskGroup(of: OCResponse.self) { group -> Void in
@@ -55,33 +46,4 @@ public final class OCBatchProvider {
         }
     }
     
-    /// get the reverse geocoding for the given location with the given options, return a OCResponse
-    private func getReverseGeocode(lat: Double, lng: Double, options: OCOptions) async -> OCResponse {
-        do {
-            let data = try await client.fetchDataAsync(lat: lat, lng: lng, options: options)
-            let response: OCResponse = try JSONDecoder().decode(OCResponse.self, from: data)
-            return response
-        } catch {
-            self.error = error as? APIError
-            print(error)
-            return OCResponse()
-        }
-    }
-    
-    /// get the geocode for the given address with the given options, return a OCResponse
-    private func getForwardGeocode(address: String, options: OCOptions) async -> OCResponse {
-        do {
-            let data = try await client.fetchDataAsync(address: address, options: options)
-            let response: OCResponse = try JSONDecoder().decode(OCResponse.self, from: data)
-            return response
-        } catch {
-            self.error = error as? APIError
-            print(error)
-            return OCResponse()
-        }
-    }
-    
 }
-
-
-
