@@ -256,6 +256,11 @@ public struct Bounds: Codable, Sendable {
 public struct Geometry: Codable, Sendable {
     public let lat, lng: Double
     
+    public init(lat: Double, lng: Double) {
+        self.lat = lat
+        self.lng = lng
+    }
+    
     public func asCoordinate() -> CLLocationCoordinate2D {
         CLLocationCoordinate2D(latitude: lat, longitude: lng)
     }
