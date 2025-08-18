@@ -10,7 +10,7 @@ import CoreLocation
 
 
 // MARK: - OCResponse
-public struct OCResponse: Identifiable, Codable {
+public struct OCResponse: Identifiable, Codable, Sendable {
     public let id = UUID()
      
     public let documentation: String
@@ -55,7 +55,7 @@ public struct OCResponse: Identifiable, Codable {
 }
 
 // MARK: - License
-public struct License: Identifiable, Codable {
+public struct License: Identifiable, Codable, Sendable {
     public let id = UUID()
     
     public let name: String
@@ -67,12 +67,12 @@ public struct License: Identifiable, Codable {
 }
 
 // MARK: - Rate
-public struct Rate: Codable {
+public struct Rate: Codable, Sendable {
     public let limit, remaining, reset: Int
 }
 
 // MARK: - Result
-public struct Result: Identifiable, Codable {
+public struct Result: Identifiable, Codable, Sendable {
     public let id = UUID()
     
     public let annotations: Annotations?
@@ -90,7 +90,7 @@ public struct Result: Identifiable, Codable {
 }
 
 // MARK: - Annotations
-public struct Annotations: Codable {
+public struct Annotations: Codable, Sendable {
     public let dms: Dms?
     public let mgrs, maidenhead: String?
     public let mercator: Mercator?
@@ -118,7 +118,7 @@ public struct Annotations: Codable {
 }
 
 // MARK: - Currency
-public struct Currency: Codable {
+public struct Currency: Codable, Sendable {
     public let alternateSymbols: [String]?
     public let decimalMark, disambiguateSymbol, format, htmlEntity: String?
     public let isoCode, isoNumeric, name: String?
@@ -145,17 +145,17 @@ public struct Currency: Codable {
 }
 
 // MARK: - Dms
-public struct Dms: Codable {
+public struct Dms: Codable, Sendable {
     public let lat, lng: String
 }
 
 // MARK: - Mercator
-public struct Mercator: Codable {
+public struct Mercator: Codable, Sendable {
     public let x, y: Double
 }
 
 // MARK: - Osm
-public struct Osm: Codable {
+public struct Osm: Codable, Sendable {
     public let editURL, noteURL, url: String
 
     enum CodingKeys: String, CodingKey {
@@ -166,7 +166,7 @@ public struct Osm: Codable {
 }
 
 // MARK: - Roadinfo
-public struct Roadinfo: Codable {
+public struct Roadinfo: Codable, Sendable {
     public let driveOn, road, roadType, speedIn: String?
 
     enum CodingKeys: String, CodingKey {
@@ -178,7 +178,7 @@ public struct Roadinfo: Codable {
 }
 
 // MARK: - Sun
-public struct Sun: Codable {
+public struct Sun: Codable, Sendable {
     public let rise, sunSet: Rise
 
     enum CodingKeys: String, CodingKey {
@@ -188,12 +188,12 @@ public struct Sun: Codable {
 }
 
 // MARK: - Rise
-public struct Rise: Codable {
+public struct Rise: Codable, Sendable {
     public let apparent, astronomical, civil, nautical: Int
 }
 
 // MARK: - OCTimezone
-public struct OCTimezone: Codable {
+public struct OCTimezone: Codable, Sendable {
     public let name: String
     public let nowInDst, offsetSEC: Int
     public let offsetString, shortName: String
@@ -218,7 +218,7 @@ public struct OCTimezone: Codable {
 }
 
 // MARK: - UnM49
-public struct UnM49: Codable {
+public struct UnM49: Codable, Sendable {
     public let regions: Regions
     public let statisticalGroupings: [String]
 
@@ -229,7 +229,7 @@ public struct UnM49: Codable {
 }
 
 // MARK: - Regions
-public struct Regions: Codable {
+public struct Regions: Codable, Sendable {
     public let africa, na, southernAfrica, subSaharanAfrica: String?
     public let world: String?
 
@@ -243,17 +243,17 @@ public struct Regions: Codable {
 }
 
 // MARK: - What3Words
-public struct What3Words: Codable {
+public struct What3Words: Codable, Sendable {
     public let words: String
 }
 
 // MARK: - Bounds
-public struct Bounds: Codable {
+public struct Bounds: Codable, Sendable {
     public let northeast, southwest: Geometry
 }
 
 // MARK: - Geometry
-public struct Geometry: Codable {
+public struct Geometry: Codable, Sendable {
     public let lat, lng: Double
     
     public func asCoordinate() -> CLLocationCoordinate2D {
@@ -262,7 +262,7 @@ public struct Geometry: Codable {
 }
 
 // MARK: - Components
-public struct Components: Codable {
+public struct Components: Codable, Sendable {
     public let iso31661_Alpha2, iso31661_Alpha3: String?
     public let iso31662: [String]?
     public let category, normalizedCity, type, city: String?
@@ -283,23 +283,23 @@ public struct Components: Codable {
 }
 
 // MARK: - DistanceFromQ
-public struct DistanceFromQ: Codable {
+public struct DistanceFromQ: Codable, Sendable {
     public let meters: Int
 }
 
 // MARK: - Status
-public struct Status: Codable {
+public struct Status: Codable, Sendable {
     public let code: Int
     public let message: String
 }
 
 // MARK: - StayInformed
-public struct StayInformed: Codable {
+public struct StayInformed: Codable, Sendable {
     public let blog, mastodon: String
 }
 
 // MARK: - OCTimestamp
-public struct OCTimestamp: Codable {
+public struct OCTimestamp: Codable, Sendable {
     public let createdHTTP: String
     public let createdUnix: Int
 

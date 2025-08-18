@@ -23,7 +23,7 @@ public enum OCFormats: String, Identifiable, CaseIterable {
 /*
  * Options
  */
-public struct OCOptions: Codable {
+public struct OCOptions: Codable, Sendable {
     
     public var abbrv: Int?
     public var address_only: Int?

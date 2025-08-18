@@ -24,9 +24,9 @@ public struct OCProviderGeoJson {
     }
     
     /// get the reverse geocoding for the given location with the given options, with async
-    public func reverseGeocode(lat: Double, lon: Double, options: OCOptions) async -> [MKGeoJSONFeature] {
+    public func reverseGeocode(lat: Double, lng: Double, options: OCOptions) async -> [MKGeoJSONFeature] {
         do {
-            let data = try await client.fetchDataAsync(lat: lat, lon: lon, options: options)
+            let data = try await client.fetchDataAsync(lat: lat, lng: lng, options: options)
             let geoJSONObjects = try MKGeoJSONDecoder().decode(data)
             let features = geoJSONObjects.compactMap { $0 as? MKGeoJSONFeature }
             return features

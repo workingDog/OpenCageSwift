@@ -21,9 +21,9 @@ public struct OCProviderJson {
     }
     
     /// get the reverse geocoding for the given location with the given options, with async
-    public func reverseGeocode(lat: Double, lon: Double, options: OCOptions) async -> OCResponse? {
+    public func reverseGeocode(lat: Double, lng: Double, options: OCOptions) async -> OCResponse? {
         do {
-            let data = try await client.fetchDataAsync(lat: lat, lon: lon, options: options)
+            let data = try await client.fetchDataAsync(lat: lat, lng: lng, options: options)
             let results: OCResponse = try JSONDecoder().decode(OCResponse.self, from: data)
             return results
         }
@@ -36,8 +36,8 @@ public struct OCProviderJson {
     /// get the reverse geocoding of the given location
     /// with the given options, results pass back through the binding
     @MainActor
-    public func reverseGeocode(lat: Double, lon: Double, response: Binding<OCResponse>, options: OCOptions) {
-        reverseGeocode(lat: lat, lon: lon, options: options) { results in
+    public func reverseGeocode(lat: Double, lng: Double, response: Binding<OCResponse>, options: OCOptions) {
+        reverseGeocode(lat: lat, lng: lng, options: options) { results in
             if let results {
                 response.wrappedValue = results
             }
@@ -46,9 +46,9 @@ public struct OCProviderJson {
     
     /// get the reverse geocoding for the given location with the given options, with completion handler
     @MainActor
-    public func reverseGeocode(lat: Double, lon: Double, options: OCOptions, completion: @escaping (OCResponse?) -> Void) {
+    public func reverseGeocode(lat: Double, lng: Double, options: OCOptions, completion: @escaping (OCResponse?) -> Void) {
         Task {
-            let results: OCResponse? = await reverseGeocode(lat: lat, lon: lon, options: options)
+            let results: OCResponse? = await reverseGeocode(lat: lat, lng: lng, options: options)
             DispatchQueue.main.async {
                 completion(results)
             }

@@ -8,6 +8,8 @@ import Foundation
 import SwiftUI
 import MapKit
 
+
+
 /**
  * access the OpenCage data using observable data model, for use in SwiftUI views
  */
@@ -25,9 +27,9 @@ import MapKit
     }
     
     /// get the reverse geocoding for the given location with the given options
-    public func reverseGeocode(lat: Double, lon: Double, options: OCOptions) async {
+    public func reverseGeocode(lat: Double, lng: Double, options: OCOptions) async {
         do {
-            let data = try await client.fetchDataAsync(lat: lat, lon: lon, options: options)
+            let data = try await client.fetchDataAsync(lat: lat, lng: lng, options: options)
             let geoJSONObjects = try MKGeoJSONDecoder().decode(data)
             features = geoJSONObjects.compactMap { $0 as? MKGeoJSONFeature }
         } catch {
@@ -89,4 +91,3 @@ import MapKit
  }
  
  */
-

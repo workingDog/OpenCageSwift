@@ -36,8 +36,8 @@ public enum APIError: Swift.Error, LocalizedError {
  *
  * see  https://opencagedata.com/faq#header-auth
  *
- */
-public class OCClient {
+ */    
+public actor OCClient {
 
     public var sessionManager: URLSession
     public var acceptType = "application/json; charset=utf-8"
@@ -133,8 +133,8 @@ public class OCClient {
      * @options OCOptions
      * @return Data
      */
-    public func fetchDataAsync(lat: Double, lon: Double, options: OCOptions) async throws -> Data {
-        try await fetchDataAsyncQ(query: "\(lat),\(lon)", options: options)
+    public func fetchDataAsync(lat: Double, lng: Double, options: OCOptions) async throws -> Data {
+        try await fetchDataAsyncQ(query: "\(lat),\(lng)", options: options)
     }
     
     /*
