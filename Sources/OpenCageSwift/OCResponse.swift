@@ -64,11 +64,22 @@ public struct License: Identifiable, Codable, Sendable {
     enum CodingKeys: String, CodingKey {
         case name, url
     }
+    
+    public init(name: String, url: String) {
+        self.name = name
+        self.url = url
+    }
 }
 
 // MARK: - Rate
 public struct Rate: Codable, Sendable {
     public let limit, remaining, reset: Int
+    
+    public init(limit: Int, remaining: Int, reset: Int) {
+        self.limit = limit
+        self.remaining = remaining
+        self.reset = reset
+    }
 }
 
 // MARK: - Result
@@ -86,6 +97,16 @@ public struct Result: Identifiable, Codable, Sendable {
     enum CodingKeys: String, CodingKey {
         case annotations, bounds, components, confidence, formatted, geometry
         case distanceFromQ = "distance_from_q"
+    }
+    
+    public init(annotations: Annotations? = nil, bounds: Bounds? = nil, components: Components? = nil, confidence: Int? = nil, distanceFromQ: DistanceFromQ? = nil, formatted: String? = nil, geometry: Geometry? = nil) {
+        self.annotations = annotations
+        self.bounds = bounds
+        self.components = components
+        self.formatted = formatted
+        self.geometry = geometry
+        self.confidence = confidence
+        self.distanceFromQ = distanceFromQ
     }
 }
 
@@ -115,6 +136,25 @@ public struct Annotations: Codable, Sendable {
         case unM49 = "UN_M49"
         case what3Words = "what3words"
     }
+    
+    public init(dms: Dms?, mgrs: String?, maidenhead: String?, mercator: Mercator?, osm: Osm?, unM49: UnM49?, callingcode: Int?, currency: Currency?, flag: String?, geohash: String?, qibla: Double?, roadinfo: Roadinfo?, sun: Sun?, timezone: OCTimezone?, what3Words: What3Words?) {
+        self.dms = dms
+        self.mgrs = mgrs
+        self.maidenhead = maidenhead
+        self.mercator = mercator
+        self.osm = osm
+        self.unM49 = unM49
+        self.callingcode = callingcode
+        self.currency = currency
+        self.flag = flag
+        self.geohash = geohash
+        self.qibla = qibla
+        self.roadinfo = roadinfo
+        self.sun = sun
+        self.timezone = timezone
+        self.what3Words = what3Words
+    }
+    
 }
 
 // MARK: - Currency
@@ -142,16 +182,44 @@ public struct Currency: Codable, Sendable {
         case symbolFirst = "symbol_first"
         case thousandsSeparator = "thousands_separator"
     }
+    
+    public init(alternateSymbols: [String]?, decimalMark: String?, disambiguateSymbol: String?, format: String?, htmlEntity: String?, isoCode: String?, isoNumeric: String?, name: String?, smallestDenomination: Int?, subunit: String?, subunitToUnit: Int?, symbol: String?, symbolFirst: Int?, thousandsSeparator: String?) {
+        self.alternateSymbols = alternateSymbols
+        self.decimalMark = decimalMark
+        self.disambiguateSymbol = disambiguateSymbol
+        self.format = format
+        self.htmlEntity = htmlEntity
+        self.isoCode = isoCode
+        self.isoNumeric = isoNumeric
+        self.name = name
+        self.smallestDenomination = smallestDenomination
+        self.subunit = subunit
+        self.subunitToUnit = subunitToUnit
+        self.symbol = symbol
+        self.symbolFirst = symbolFirst
+        self.thousandsSeparator = thousandsSeparator
+    }
+
 }
 
 // MARK: - Dms
 public struct Dms: Codable, Sendable {
     public let lat, lng: String
+    
+    public init(lat: String, lng: String) {
+        self.lat = lat
+        self.lng = lng
+    }
 }
 
 // MARK: - Mercator
 public struct Mercator: Codable, Sendable {
     public let x, y: Double
+    
+    public init(x: Double, y: Double) {
+        self.x = x
+        self.y = y
+    }
 }
 
 // MARK: - Osm
@@ -162,6 +230,12 @@ public struct Osm: Codable, Sendable {
         case url
         case editURL = "edit_url"
         case noteURL = "note_url"
+    }
+    
+    public init(editURL: String, noteURL: String, url: String) {
+        self.editURL = editURL
+        self.noteURL = noteURL
+        self.url = url
     }
 }
 
@@ -175,6 +249,13 @@ public struct Roadinfo: Codable, Sendable {
         case roadType = "road_type"
         case speedIn = "speed_in"
     }
+    
+    public init(driveOn: String?, road: String?, roadType: String?, speedIn: String?) {
+        self.driveOn = driveOn
+        self.road = road
+        self.roadType = roadType
+        self.speedIn = speedIn
+    }
 }
 
 // MARK: - Sun
@@ -185,11 +266,23 @@ public struct Sun: Codable, Sendable {
         case rise
         case sunSet = "set"
     }
+    
+    public init(rise: Rise, sunSet: Rise) {
+        self.rise = rise
+        self.sunSet = sunSet
+    }
 }
 
 // MARK: - Rise
 public struct Rise: Codable, Sendable {
     public let apparent, astronomical, civil, nautical: Int
+    
+    public init(apparent: Int, astronomical: Int, civil: Int, nautical: Int) {
+        self.apparent = apparent
+        self.astronomical = astronomical
+        self.civil = civil
+        self.nautical = nautical
+    }
 }
 
 // MARK: - OCTimezone
@@ -204,6 +297,14 @@ public struct OCTimezone: Codable, Sendable {
         case offsetSEC = "offset_sec"
         case offsetString = "offset_string"
         case shortName = "short_name"
+    }
+    
+    public init(name: String, nowInDst: Int, offsetSEC: Int, offsetString: String, shortName: String) {
+        self.name = name
+        self.nowInDst = nowInDst
+        self.offsetSEC = offsetSEC
+        self.offsetString = offsetString
+        self.shortName = shortName
     }
     
     /// Convert to Foundation.TimeZone
@@ -226,6 +327,11 @@ public struct UnM49: Codable, Sendable {
         case regions
         case statisticalGroupings = "statistical_groupings"
     }
+    
+    public init(regions: Regions, statisticalGroupings: [String]) {
+        self.regions = regions
+        self.statisticalGroupings = statisticalGroupings
+    }
 }
 
 // MARK: - Regions
@@ -240,16 +346,33 @@ public struct Regions: Codable, Sendable {
         case subSaharanAfrica = "SUB-SAHARAN_AFRICA"
         case world = "WORLD"
     }
+    
+    public init(africa: String?, na: String?, southernAfrica: String?, subSaharanAfrica: String?, world: String?) {
+        self.africa = africa
+        self.na = na
+        self.southernAfrica = southernAfrica
+        self.subSaharanAfrica = subSaharanAfrica
+        self.world = world
+    }
 }
 
 // MARK: - What3Words
 public struct What3Words: Codable, Sendable {
     public let words: String
+    
+    public init(words: String) {
+        self.words = words
+    }
 }
 
 // MARK: - Bounds
 public struct Bounds: Codable, Sendable {
     public let northeast, southwest: Geometry
+    
+    public init(northeast: Geometry, southwest: Geometry) {
+        self.northeast = northeast
+        self.southwest = southwest
+    }
 }
 
 // MARK: - Geometry
@@ -285,22 +408,54 @@ public struct Components: Codable, Sendable {
         case countryCode = "country_code"
         case roadType = "road_type"
     }
+    
+    public init(iso31661_Alpha2: String?, iso31661_Alpha3: String?, iso31662: [String]?, category: String?, normalizedCity: String?, type: String?, city: String?, continent: String?, country: String?, countryCode: String?, postcode: String?, road: String?, roadType: String?, state: String?, suburb: String?) {
+        self.iso31661_Alpha2 = iso31661_Alpha2
+        self.iso31661_Alpha3 = iso31661_Alpha3
+        self.iso31662 = iso31662
+        self.category = category
+        self.normalizedCity = normalizedCity
+        self.type = type
+        self.city = city
+        self.continent = continent
+        self.country = country
+        self.countryCode = countryCode
+        self.postcode = postcode
+        self.road = road
+        self.roadType = roadType
+        self.state = state
+        self.suburb = suburb
+    }
 }
 
 // MARK: - DistanceFromQ
 public struct DistanceFromQ: Codable, Sendable {
     public let meters: Int
+    
+    public init(meters: Int) {
+        self.meters = meters
+    }
 }
 
 // MARK: - Status
 public struct Status: Codable, Sendable {
     public let code: Int
     public let message: String
+    
+    public init(code: Int, message: String) {
+        self.code = code
+        self.message = message
+    }
 }
 
 // MARK: - StayInformed
 public struct StayInformed: Codable, Sendable {
     public let blog, mastodon: String
+    
+    public init(blog: String, mastodon: String) {
+        self.blog = blog
+        self.mastodon = mastodon
+    }
 }
 
 // MARK: - OCTimestamp
