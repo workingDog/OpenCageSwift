@@ -1,5 +1,5 @@
 //
-//  OCBatchProvider.swift
+//  OCBatchJsonModel.swift
 //  OpenCageSwift
 //
 //  Created by Ringo Wathelet on 2025/08/18.
@@ -14,7 +14,7 @@ import SwiftUI
  */
 @Observable
 @MainActor
-public final class OCBatchProvider: OCBaseJsonModel {
+public final class OCBatchJsonModel: OCBaseJsonModel {
     
     public var batchResponses: [OCResponse] = []
     

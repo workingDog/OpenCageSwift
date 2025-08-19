@@ -1,5 +1,5 @@
 //
-//  OCDataModelGeojson.swift
+//  OCDataGeojsonModel.swift
 //  OpenCageSwift
 //
 //  Created by Ringo Wathelet on 2025/08/15.
@@ -13,7 +13,7 @@ import MapKit
 /**
  * access the OpenCage data using observable data model, for use in SwiftUI views
  */
-@Observable public class OCDataModelGeojson {
+@Observable public class OCDataGeojsonModel {
     
     public var features: [MKGeoJSONFeature] = []
     public var isLoading = false

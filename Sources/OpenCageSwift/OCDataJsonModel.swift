@@ -1,5 +1,5 @@
 //
-//  OCDataModelJson.swift
+//  OCDataJsonModel.swift
 //  OpenCageSwift
 //
 //  Created by Ringo Wathelet on 2025/08/15.
@@ -14,7 +14,7 @@ import SwiftUI
  */
 @Observable
 @MainActor
-public final class OCDataModelJson: OCBaseJsonModel {
+public final class OCDataJsonModel: OCBaseJsonModel {
     
     public var response: OCResponse = OCResponse()
     
