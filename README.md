@@ -53,6 +53,10 @@ Using the @Observable data model **OCDataJsonModel**
 
 
 ```swift
+import SwiftUI
+import MapKit
+import OpenCageSwift
+
 struct ContentView: View {
     let dataModel = OCDataJsonModel(apiKey: "YOUR-KEY")
 
