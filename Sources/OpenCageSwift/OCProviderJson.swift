@@ -49,9 +49,7 @@ public struct OCProviderJson {
     public func reverseGeocode(lat: Double, lng: Double, options: OCOptions, completion: @escaping (OCResponse?) -> Void) {
         Task {
             let results: OCResponse? = await reverseGeocode(lat: lat, lng: lng, options: options)
-            DispatchQueue.main.async {
-                completion(results)
-            }
+            completion(results)
         }
     }
     
@@ -72,9 +70,7 @@ public struct OCProviderJson {
     public func forwardGeocode(address: String, options: OCOptions, completion: @escaping (OCResponse?) -> Void) {
         Task {
             let results: OCResponse? = try await forwardGeocode(address: address, options: options)
-            DispatchQueue.main.async {
-                completion(results)
-            }
+            completion(results)
         }
     }
 
