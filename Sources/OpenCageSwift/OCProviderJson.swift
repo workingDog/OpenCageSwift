@@ -21,6 +21,7 @@ public struct OCProviderJson {
     }
     
     /// get the reverse geocoding for the given location with the given options, with async
+    @MainActor
     public func reverseGeocode(lat: Double, lng: Double, options: OCOptions) async -> OCResponse? {
         do {
             let data = try await client.fetchDataAsync(lat: lat, lng: lng, options: options)
@@ -54,6 +55,7 @@ public struct OCProviderJson {
     }
     
     /// get the geocode for the given address with the given options
+    @MainActor
     public func forwardGeocode(address: String, options: OCOptions) async throws -> OCResponse? {
         do {
             let data = try await client.fetchDataAsync(address: address, options: options)
