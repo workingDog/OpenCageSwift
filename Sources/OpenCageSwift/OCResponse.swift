@@ -224,7 +224,7 @@ public struct Mercator: Codable, Sendable {
 
 // MARK: - Osm
 public struct Osm: Codable, Sendable {
-    public let editURL, noteURL, url: String
+    public let editURL, noteURL, url: String?
 
     enum CodingKeys: String, CodingKey {
         case url
